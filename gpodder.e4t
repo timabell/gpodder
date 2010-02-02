@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-4.1.dtd">
+<!-- eric4 tasks file for project gpodder -->
+<!-- Saved: 2009-11-29, 01:09:02 -->
+<Tasks version="4.1">
+  <Task priority="1" completed="False" bugfix="True">
+    <Summary>FIXME: Hildonization on Fremantle</Summary>
+    <Description></Description>
+    <Created>2009-11-28, 23:19:23</Created>
+    <Resource>
+      <Filename>
+        <Dir>src</Dir>
+        <Dir>gpodder</Dir>
+        <Name>gui.py</Name>
+      </Filename>
+      <Linenumber>2835</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="True">
+    <Summary>FIXME: Hildonization on Fremantle</Summary>
+    <Description></Description>
+    <Created>2009-11-28, 23:19:23</Created>
+    <Resource>
+      <Filename>
+        <Dir>src</Dir>
+        <Dir>gpodder</Dir>
+        <Name>gui.py</Name>
+      </Filename>
+      <Linenumber>2863</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>
