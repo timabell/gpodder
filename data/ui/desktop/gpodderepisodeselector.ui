@@ -154,6 +154,47 @@
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkButton" id="btnCheckByLimit">
+                    <property name="visible">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="focus_on_click">True</property>
+                    <signal handler="on_btnCheckByLimit_clicked" name="clicked"/>
+                    <child>
+                      <object class="GtkAlignment" id="btnCheckExcessAlignment">
+                        <property name="visible">True</property>
+                        <property name="xscale">0</property>
+                        <property name="yscale">0</property>
+                        <property name="top_padding">0</property>
+                        <property name="bottom_padding">0</property>
+                        <property name="left_padding">0</property>
+                        <property name="right_padding">0</property>
+                        <child>
+                          <object class="GtkLabel" id="btnCheckExcessLabel">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">Select by limit</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_markup">False</property>
+                            <property name="wrap">False</property>
+                            <property name="selectable">False</property>
+                            <property name="width_chars">-1</property>
+                            <property name="single_line_mode">False</property>
+                          </object>
+                          <packing>
+                            <property name="padding">0</property>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                          </packing>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="padding">0</property>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkButton" id="btnCheckNone">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>

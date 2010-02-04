@@ -581,7 +581,120 @@
                 <property name="single_line_mode">False</property>
               </object>
             </child>
-          </object>
+            <child>
+              <object class="GtkVBox" id="vboxLimits">
+                <property name="border_width">10</property>
+                <property name="visible">True</property>
+                <property name="homogeneous">False</property>
+                <property name="spacing">5</property>
+                <child>
+                  <object class="GtkLabel" id="labelChannelLimitTitle1">
+                    <property name="label" translatable="yes">&lt;b&gt;Old episode limit&lt;/b&gt;</property>
+                    <property name="visible">True</property>
+                    <property name="use_underline">False</property>
+                    <property name="use_markup">True</property>
+                    <property name="wrap">False</property>
+                    <property name="selectable">False</property>
+                    <property name="xalign">0</property>
+                    <property name="width_chars">-1</property>
+                    <property name="single_line_mode">False</property>
+                  </object>
+                  <packing>
+                    <property name="padding">0</property>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="cbLimitByCount">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="label" translatable="yes">Limit the number of episodes kept for this podcast</property>
+                    <property name="use_underline">True</property>
+                    <property name="focus_on_click">True</property>
+                    <property name="active">False</property>
+                    <property name="inconsistent">False</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="padding">0</property>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkHBox" id="hboxLimitCount">
+                    <property name="visible">True</property>
+                    <property name="homogeneous">False</property>
+                    <property name="spacing">5</property>
+                    <child>
+                      <object class="GtkLabel" id="labelLimit119">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Number of episodes to keep:</property>
+                        <property name="use_underline">False</property>
+                        <property name="use_markup">False</property>
+                        <property name="wrap">False</property>
+                        <property name="selectable">False</property>
+                        <property name="width_chars">-1</property>
+                        <property name="single_line_mode">False</property>
+                      </object>
+                      <packing>
+                        <property name="padding">0</property>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="entryLimitCount">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="max_length">0</property>
+                        <property name="has_frame">True</property>
+                        <property name="invisible_char">*</property>
+                        <property name="activates_default">False</property>
+                      </object>
+                      <packing>
+                        <property name="padding">0</property>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="padding">0</property>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkHSeparator" id="hseparatorLimit12">
+                    <property name="visible">True</property>
+                  </object>
+                  <packing>
+                    <property name="padding">0</property>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="tab_expand">False</property>
+                <property name="tab_fill">True</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="labelChannelConfigTab">
+               <property name="visible">True</property>
+                <property name="label" translatable="yes">Limits</property>
+                <property name="use_underline">False</property>
+                <property name="use_markup">False</property>
+                <property name="wrap">False</property>
+                <property name="selectable">False</property>
+                <property name="width_chars">-1</property>
+                <property name="single_line_mode">False</property>
+              </object>
+           </child>
+         </object>
           <packing>
             <property name="padding">0</property>
             <property name="expand">True</property>
