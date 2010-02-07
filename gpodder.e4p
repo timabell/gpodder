@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.2.dtd">
 <!-- eric4 project file for project gpodder -->
-<!-- Saved: 2010-02-03, 01:03:28 -->
+<!-- Saved: 2010-02-04, 23:44:24 -->
 <!-- Copyright (C) 2010 ,  -->
 <Project version="4.2">
   <ProgLanguage mixed="0">Python</ProgLanguage>
@@ -681,7 +681,15 @@
   <Interfaces>
   </Interfaces>
   <Others>
+    <Other>
+      <Dir>bin</Dir>
+      <Name>gpodder</Name>
+    </Other>
   </Others>
+  <MainScript>
+    <Dir>bin</Dir>
+    <Name>gpodder</Name>
+  </MainScript>
   <Vcs>
     <VcsType>None</VcsType>
   </Vcs>
