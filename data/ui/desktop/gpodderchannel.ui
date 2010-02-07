@@ -645,7 +645,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="limitCount">
+                      <object class="GtkEntry" id="entryLimitCount">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="max_length">0</property>
