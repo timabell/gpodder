@@ -173,6 +173,7 @@ class Database(object):
             ("release_expected", "INTEGER"),
             ("release_deviation", "INTEGER"),
             ("updated_timestamp", "INTEGER"),
+            ("keep_limit", "INTEGER"), #max number of episodes to keep
             ))
 
         self.upgrade_table("episodes", (
@@ -275,7 +276,8 @@ class Database(object):
                 auto_foldername,
                 release_expected,
                 release_deviation,
-                updated_timestamp
+                updated_timestamp,
+                keep_limit
             FROM
                 channels
             WHERE
@@ -309,6 +311,7 @@ class Database(object):
                 'release_expected': row[17],
                 'release_deviation': row[18],
                 'updated_timestamp': row[19],
+                'keep_limit' : row[20],
                 }
 
             if row[0] in stats:
@@ -362,10 +365,10 @@ class Database(object):
         self.log("save_channel((%s)%s)", c.id or "new", c.url)
 
         if c.id is None:
-            cur.execute("INSERT INTO channels (url, title, override_title, link, description, image, pubDate, sync_to_devices, device_playlist_name, username, password, last_modified, etag, channel_is_locked, foldername, auto_foldername, release_expected, release_deviation, updated_timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (c.url, c.title, c.override_title, c.link, c.description, c.image, self.__mktime__(c.pubDate), c.sync_to_devices, c.device_playlist_name, c.username, c.password, c.last_modified, c.etag, c.channel_is_locked, c.foldername, c.auto_foldername, c.release_expected, c.release_deviation, c.updated_timestamp))
+            cur.execute("INSERT INTO channels (url, title, override_title, link, description, image, pubDate, sync_to_devices, device_playlist_name, username, password, last_modified, etag, channel_is_locked, foldername, auto_foldername, release_expected, release_deviation, updated_timestamp, keep_limit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (c.url, c.title, c.override_title, c.link, c.description, c.image, self.__mktime__(c.pubDate), c.sync_to_devices, c.device_playlist_name, c.username, c.password, c.last_modified, c.etag, c.channel_is_locked, c.foldername, c.auto_foldername, c.release_expected, c.release_deviation, c.updated_timestamp,  c.keep_limit))
             self.channel_map[c.url] = cur.lastrowid
         else:
-            cur.execute("UPDATE channels SET url = ?, title = ?, override_title = ?, link = ?, description = ?, image = ?, pubDate = ?, sync_to_devices = ?, device_playlist_name = ?, username = ?, password = ?, last_modified = ?, etag = ?, channel_is_locked = ?, foldername = ?, auto_foldername = ?, release_expected = ?, release_deviation = ?, updated_timestamp = ?, deleted = 0 WHERE id = ?", (c.url, c.title, c.override_title, c.link, c.description, c.image, self.__mktime__(c.pubDate), c.sync_to_devices, c.device_playlist_name, c.username, c.password, c.last_modified, c.etag, c.channel_is_locked, c.foldername, c.auto_foldername, c.release_expected, c.release_deviation, c.updated_timestamp, c.id, ))
+            cur.execute("UPDATE channels SET url = ?, title = ?, override_title = ?, link = ?, description = ?, image = ?, pubDate = ?, sync_to_devices = ?, device_playlist_name = ?, username = ?, password = ?, last_modified = ?, etag = ?, channel_is_locked = ?, foldername = ?, auto_foldername = ?, release_expected = ?, release_deviation = ?, updated_timestamp = ?, keep_limit = ?, deleted = 0 WHERE id = ?", (c.url, c.title, c.override_title, c.link, c.description, c.image, self.__mktime__(c.pubDate), c.sync_to_devices, c.device_playlist_name, c.username, c.password, c.last_modified, c.etag, c.channel_is_locked, c.foldername, c.auto_foldername, c.release_expected, c.release_deviation, c.updated_timestamp, c.keep_limit,  c.id, ))
 
         cur.close()
         self.lock.release()

@@ -56,9 +56,9 @@ class gPodderChannel(BuilderWidget):
         self.channel_description.set_buffer( b)
 
         #Limits
-        if self.channel.keepLimit:
+        if self.channel.keep_limit:
             self.cbLimitByCount.set_active(True)
-            self.entryLimitCount.set_text(str(self.channel.keepLimit))
+            self.entryLimitCount.set_text(str(self.channel.keep_limit))
         
         #Add Drag and Drop Support
         flags = gtk.DEST_DEFAULT_ALL
@@ -114,7 +114,7 @@ class gPodderChannel(BuilderWidget):
         self.channel.password = self.FeedPassword.get_text()
         # limits
         if self.cbLimitByCount.get_active():
-            self.channel.keepLimit = int(self.entryLimitCount.get_text())
+            self.channel.keep_limit = int(self.entryLimitCount.get_text())
         else:
             self.channel.keepLimit = None;
         self.channel.save()

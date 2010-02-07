@@ -351,7 +351,7 @@ class PodcastChannel(PodcastModelObject):
         self.newest_pubdate_cached = None
         self.foldername = None
         self.auto_foldername = 1 # automatically generated foldername
-        self.keepLimit = None # maximum number of episodes to save
+        self.keep_limit = None # maximum number of episodes to save
 
         # should this channel be synced to devices? (ex: iPod)
         self.sync_to_devices = True
