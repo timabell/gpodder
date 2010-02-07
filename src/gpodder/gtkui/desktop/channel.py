@@ -107,6 +107,11 @@ class gPodderChannel(BuilderWidget):
         self.channel.set_custom_title(self.entryTitle.get_text())
         self.channel.username = self.FeedUsername.get_text().strip()
         self.channel.password = self.FeedPassword.get_text()
+        # limits
+        if self.cbLimitByCount.get_active():
+            self.channel.keepLimit = int(self.entryLimitCount.get_text())
+        else:
+            self.channel.keepLimit = None;
         self.channel.save()
 
         self.gPodderChannel.destroy()
