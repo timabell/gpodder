@@ -55,6 +55,11 @@ class gPodderChannel(BuilderWidget):
         b.set_text( self.channel.description)
         self.channel_description.set_buffer( b)
 
+        #Limits
+        if self.channel.keepLimit:
+            self.cbLimitByCount.set_active(True)
+            self.entryLimitCount.set_text(str(self.channel.keepLimit))
+        
         #Add Drag and Drop Support
         flags = gtk.DEST_DEFAULT_ALL
         targets = [ ('text/uri-list', 0, 2), ('text/plain', 0, 4) ]
