@@ -2725,7 +2725,7 @@ class gPodder(BuilderWidget, dbus.service.Object):
         gPodderEpisodeSelector(self.gPodder, title = _('Remove old episodes'), instructions = instructions, \
                                 episodes = episodes, selected = selected, columns = columns, \
                                 stock_ok_button = gtk.STOCK_DELETE, callback = self.delete_episode_list, \
-                                selection_buttons = selection_buttons, _config=self.config)
+                                selection_buttons = selection_buttons, _config=self.config,  runningCleanup = True)
 
     def on_selected_episodes_status_changed(self):
         self.update_episode_list_icons(selected=True)

@@ -88,7 +88,7 @@ class gPodderEpisodeSelector(BuilderWidget):
                            over an episode (default is 'description')
                            
     """
-    finger_friendly_widgets = ['btnCancel', 'btnOK', 'btnCheckAll', 'btnCheckNone', 'treeviewEpisodes']
+    finger_friendly_widgets = ['btnCancel', 'btnOK', 'btnCheckAll', 'btnCheckByLimit','btnCheckNone', 'treeviewEpisodes']
     
     COLUMN_INDEX = 0
     COLUMN_TOOLTIP = 1
@@ -217,6 +217,9 @@ class gPodderEpisodeSelector(BuilderWidget):
         if self.remove_callback is not None:
             self.btnRemoveAction.show()
             self.btnRemoveAction.set_label(self.remove_action)
+        
+        if hasattr(self, 'runningCleanup') and self.runningCleanup:
+            self.btnCheckByLimit.show()
 
         # connect to tooltip signals
         if self.tooltip_attribute is not None:
@@ -360,6 +363,9 @@ class gPodderEpisodeSelector(BuilderWidget):
             self.model.set_value( row.iter, self.COLUMN_TOGGLE, True)
 
         self.calculate_total_size()
+
+    def on_btnCheckByLimit_clicked(self, widget):
+        pass #todo: btnCheckByLimit action
 
     def on_btnCheckNone_clicked( self, widget):
         for row in self.model:
