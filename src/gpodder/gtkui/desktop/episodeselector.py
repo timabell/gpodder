@@ -294,6 +294,10 @@ class gPodderEpisodeSelector(BuilderWidget):
             item.connect('activate', self.on_btnCheckAll_clicked)
             menu.append(item)
 
+            item = gtk.MenuItem(_('Select by limit'))
+            item.connect('activate', self.on_btnCheckByLimit_clicked)
+            menu.append(item)
+
             item = gtk.MenuItem(_('Select none'))
             item.connect('activate', self.on_btnCheckNone_clicked)
             menu.append(item)
@@ -365,7 +369,15 @@ class gPodderEpisodeSelector(BuilderWidget):
         self.calculate_total_size()
 
     def on_btnCheckByLimit_clicked(self, widget):
-        pass #todo: btnCheckByLimit action
+        #todo: btnCheckByLimit action - check first n of each channel based on config
+        for row in self.model:
+            episode=self.episodes[self.model.get_value( row.iter, self.COLUMN_INDEX)]
+            if episode.channel.keep_limit:
+                self.model.set_value( row.iter, self.COLUMN_TOGGLE, True)
+            else:
+                self.model.set_value( row.iter, self.COLUMN_TOGGLE, False)
+
+        self.calculate_total_size()
 
     def on_btnCheckNone_clicked( self, widget):
         for row in self.model:
