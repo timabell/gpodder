@@ -55,6 +55,11 @@ class gPodderChannel(BuilderWidget):
         b.set_text( self.channel.description)
         self.channel_description.set_buffer( b)
 
+        #Limits
+        if self.channel.keep_limit:
+            self.cbLimitByCount.set_active(True)
+            self.entryLimitCount.set_text(str(self.channel.keep_limit))
+        
         #Add Drag and Drop Support
         flags = gtk.DEST_DEFAULT_ALL
         targets = [ ('text/uri-list', 0, 2), ('text/plain', 0, 4) ]
@@ -107,6 +112,11 @@ class gPodderChannel(BuilderWidget):
         self.channel.set_custom_title(self.entryTitle.get_text())
         self.channel.username = self.FeedUsername.get_text().strip()
         self.channel.password = self.FeedPassword.get_text()
+        # limits
+        if self.cbLimitByCount.get_active():
+            self.channel.keep_limit = int(self.entryLimitCount.get_text())
+        else:
+            self.channel.keepLimit = None;
         self.channel.save()
 
         self.gPodderChannel.destroy()

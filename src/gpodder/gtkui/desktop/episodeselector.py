@@ -88,7 +88,7 @@ class gPodderEpisodeSelector(BuilderWidget):
                            over an episode (default is 'description')
                            
     """
-    finger_friendly_widgets = ['btnCancel', 'btnOK', 'btnCheckAll', 'btnCheckNone', 'treeviewEpisodes']
+    finger_friendly_widgets = ['btnCancel', 'btnOK', 'btnCheckAll', 'btnCheckByLimit','btnCheckNone', 'treeviewEpisodes']
     
     COLUMN_INDEX = 0
     COLUMN_TOOLTIP = 1
@@ -217,6 +217,9 @@ class gPodderEpisodeSelector(BuilderWidget):
         if self.remove_callback is not None:
             self.btnRemoveAction.show()
             self.btnRemoveAction.set_label(self.remove_action)
+        
+        if hasattr(self, 'runningCleanup') and self.runningCleanup:
+            self.btnCheckByLimit.show()
 
         # connect to tooltip signals
         if self.tooltip_attribute is not None:
@@ -291,6 +294,10 @@ class gPodderEpisodeSelector(BuilderWidget):
             item.connect('activate', self.on_btnCheckAll_clicked)
             menu.append(item)
 
+            item = gtk.MenuItem(_('Select by limit'))
+            item.connect('activate', self.on_btnCheckByLimit_clicked)
+            menu.append(item)
+
             item = gtk.MenuItem(_('Select none'))
             item.connect('activate', self.on_btnCheckNone_clicked)
             menu.append(item)
@@ -358,6 +365,25 @@ class gPodderEpisodeSelector(BuilderWidget):
     def on_btnCheckAll_clicked( self, widget):
         for row in self.model:
             self.model.set_value( row.iter, self.COLUMN_TOGGLE, True)
+
+        self.calculate_total_size()
+
+    def on_btnCheckByLimit_clicked(self, widget):
+        #todo: btnCheckByLimit action - check first n of each channel based on config
+        channelCounts={}
+        for row in self.model:
+            episode=self.episodes[self.model.get_value( row.iter, self.COLUMN_INDEX)]
+            if episode.channel.keep_limit:
+                if not episode.channel in channelCounts:
+                    channelCounts[episode.channel] = 1
+                else:
+                    channelCounts[episode.channel] += 1
+                if channelCounts[episode.channel]  > episode.channel.keep_limit:
+                    self.model.set_value( row.iter, self.COLUMN_TOGGLE, True)
+                else:
+                    self.model.set_value( row.iter, self.COLUMN_TOGGLE, False)
+            else:
+                self.model.set_value( row.iter, self.COLUMN_TOGGLE, False)
 
         self.calculate_total_size()
 
