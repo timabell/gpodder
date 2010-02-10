@@ -370,10 +370,18 @@ class gPodderEpisodeSelector(BuilderWidget):
 
     def on_btnCheckByLimit_clicked(self, widget):
         #todo: btnCheckByLimit action - check first n of each channel based on config
+        channelCounts={}
         for row in self.model:
             episode=self.episodes[self.model.get_value( row.iter, self.COLUMN_INDEX)]
             if episode.channel.keep_limit:
-                self.model.set_value( row.iter, self.COLUMN_TOGGLE, True)
+                if not episode.channel in channelCounts:
+                    channelCounts[episode.channel] = 1
+                else:
+                    channelCounts[episode.channel] += 1
+                if channelCounts[episode.channel]  > episode.channel.keep_limit:
+                    self.model.set_value( row.iter, self.COLUMN_TOGGLE, True)
+                else:
+                    self.model.set_value( row.iter, self.COLUMN_TOGGLE, False)
             else:
                 self.model.set_value( row.iter, self.COLUMN_TOGGLE, False)
 
