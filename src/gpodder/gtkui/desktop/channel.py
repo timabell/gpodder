@@ -116,7 +116,7 @@ class gPodderChannel(BuilderWidget):
         if self.cbLimitByCount.get_active():
             self.channel.keep_limit = int(self.entryLimitCount.get_text())
         else:
-            self.channel.keepLimit = None;
+            self.channel.keep_limit = None;
         self.channel.save()
 
         self.gPodderChannel.destroy()
