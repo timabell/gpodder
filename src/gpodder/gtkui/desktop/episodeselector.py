@@ -218,7 +218,7 @@ class gPodderEpisodeSelector(BuilderWidget):
             self.btnRemoveAction.show()
             self.btnRemoveAction.set_label(self.remove_action)
         
-        if hasattr(self, 'runningCleanup') and self.runningCleanup:
+        if hasattr(self, 'running_cleanup') and self.running_cleanup:
             self.btnCheckByLimit.show()
 
         # connect to tooltip signals
