@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.2.dtd">
 <!-- eric4 project file for project gpodder -->
-<!-- Saved: 2009-11-28, 16:23:39 -->
-<!-- Copyright (C) 2009 ,  -->
+<!-- Saved: 2010-02-03, 01:03:28 -->
+<!-- Copyright (C) 2010 ,  -->
 <Project version="4.2">
   <ProgLanguage mixed="0">Python</ProgLanguage>
   <ProjectType>Qt4</ProjectType>
@@ -265,13 +265,6 @@
       <Dir>gtkui</Dir>
       <Dir>frmntl</Dir>
       <Name>episodeselector.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>gpodder</Dir>
-      <Dir>gtkui</Dir>
-      <Dir>frmntl</Dir>
-      <Name>podcasts.py</Name>
     </Source>
     <Source>
       <Dir>src</Dir>
@@ -614,12 +607,6 @@
       <Dir>ui</Dir>
       <Dir>maemo</Dir>
       <Name>gpodderpodcastdirectory.ui</Name>
-    </Form>
-    <Form>
-      <Dir>data</Dir>
-      <Dir>ui</Dir>
-      <Dir>frmntl</Dir>
-      <Name>gpodderpodcasts.ui</Name>
     </Form>
     <Form>
       <Dir>data</Dir>
